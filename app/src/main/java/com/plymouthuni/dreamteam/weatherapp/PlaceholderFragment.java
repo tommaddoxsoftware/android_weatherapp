@@ -1,13 +1,5 @@
-//**************************************************************************//
-// Nigel's attempt at fragments.											//
-//																			//
-// You will see that I am not using the "JavaDoc" style of comments, as this//
-// program isn't intended to be self-documenting.  When you write your code,//
-// I suggest that you do indeed use the "JavaDoc" type comments.			//
-// 																			//
-// C Nigel@soc.plymouth.ac.uk 2018.											//
-//**************************************************************************//
-package com.plymouth.dreamteam.aint255androidweatherapp;
+
+package com.plymouthuni.dreamteam.weatherapp;
 
 
 
