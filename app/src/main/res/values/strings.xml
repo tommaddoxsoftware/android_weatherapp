@@ -9,4 +9,5 @@
     <string name="menu_item_3">My Account</string>
     <string name="menu_item_4">Something</string>
     <string name="menu_item_5">Settings</string>
+    <string name="dummy">Dummy Text</string>
 </resources>
