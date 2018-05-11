@@ -1,8 +1,11 @@
 package com.plymouthuni.dreamteam.weatherapp;
 
 import android.os.Bundle;
+import android.support.constraint.Placeholder;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -69,21 +72,69 @@ public class MainActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
+        //Add fragments to the activity
+        FragmentManager fragmentManager = getSupportFragmentManager ();
+        FragmentTransaction fragmentTransaction = null;
+        PlaceholderFragment fragment = null;
+        Bundle extraData = null;
+
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_home) {
+        switch(id) {
+            case R.id.nav_home:
+                //Create Extra Data to put into the fragment
+                extraData = new Bundle();
+                extraData.putString(PlaceholderFragment.TitleKey, "Home");
 
-        } else if (id == R.id.nav_map) {
+                //Create fragment
+                fragment = new PlaceholderFragment();
+                fragment.setArguments(extraData);
+                fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.relativeLayoutFragmentContainer, fragment);
+                fragmentTransaction.commit();
+            break;
 
-        } else if (id == R.id.nav_account) {
+            case R.id.nav_map:
+                //Create Extra Data to put into the fragment
+                extraData = new Bundle();
+                extraData.putString(PlaceholderFragment.TitleKey, "Map");
 
-        } else if (id == R.id.nav_share) {
+                //Create fragment
+                fragment = new PlaceholderFragment();
+                fragment.setArguments(extraData);
+                fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.relativeLayoutFragmentContainer, fragment);
+                fragmentTransaction.commit();
+                break;
+            case R.id.nav_account:
+                //Create Extra Data to put into the fragment
+                extraData = new Bundle();
+                extraData.putString(PlaceholderFragment.TitleKey, "My Account");
 
-        } else if (id == R.id.nav_send) {
+                //Create fragment
+                fragment = new PlaceholderFragment();
+                fragment.setArguments(extraData);
+                fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.relativeLayoutFragmentContainer, fragment);
+                fragmentTransaction.commit();
+                break;
 
+            case R.id.nav_share:
+                //Create Extra Data to put into the fragment
+                extraData = new Bundle();
+                extraData.putString(PlaceholderFragment.TitleKey, "Share");
+
+                //Create fragment
+                fragment = new PlaceholderFragment();
+                fragment.setArguments(extraData);
+                fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.relativeLayoutFragmentContainer, fragment);
+                fragmentTransaction.commit();
+                break;
+
+            case R.id.nav_send:
+                break;
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
