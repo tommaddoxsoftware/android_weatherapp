@@ -4,10 +4,15 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_settings">Settings</string>
-    <string name="menu_item_1">Home</string>
-    <string name="menu_item_2">Map</string>
-    <string name="menu_item_3">My Account</string>
-    <string name="menu_item_4">Something</string>
-    <string name="menu_item_5">Settings</string>
+    <string name="home">Home</string>
+    <string name="map">Map</string>
+    <string name="my_account">My Account</string>
+    <string name="something">Something</string>
+    <string name="settings">Settings</string>
     <string name="dummy">Dummy Text</string>
+
+    <string name="communicate">Communicate</string>
+    <string name="share">Share</string>
+    <string name="send">Send</string>
+
 </resources>

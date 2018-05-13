@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_home:
                 //Create Extra Data to put into the fragment
                 extraData = new Bundle();
-                extraData.putString(PlaceholderFragment.TitleKey, "Home");
+                extraData.putString(PlaceholderFragment.TitleKey, getString(R.string.home));
 
                 //Create fragment
                 fragment = new PlaceholderFragment();
@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_map:
                 //Create Extra Data to put into the fragment
                 extraData = new Bundle();
-                extraData.putString(PlaceholderFragment.TitleKey, "Map");
+                extraData.putString(PlaceholderFragment.TitleKey, getString(R.string.map));
 
                 //Create fragment
                 fragment = new PlaceholderFragment();
@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_account:
                 //Create Extra Data to put into the fragment
                 extraData = new Bundle();
-                extraData.putString(PlaceholderFragment.TitleKey, "My Account");
+                extraData.putString(PlaceholderFragment.TitleKey, getString(R.string.my_account));
 
                 //Create fragment
                 fragment = new PlaceholderFragment();
@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_share:
                 //Create Extra Data to put into the fragment
                 extraData = new Bundle();
-                extraData.putString(PlaceholderFragment.TitleKey, "Share");
+                extraData.putString(PlaceholderFragment.TitleKey, getString(R.string.share));
 
                 //Create fragment
                 fragment = new PlaceholderFragment();
