@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity
 
         HomeFragment home_frag = null;
         MapFragment map_frag = null;
+        WeatherFragment weather_frag = null;
 
         Bundle extraData = null;
 
@@ -101,15 +102,11 @@ public class MainActivity extends AppCompatActivity
                 fragmentTransaction.commit();
                 break;
             case R.id.nav_account:
-                //Create Extra Data to put into the fragment
-                extraData = new Bundle();
-                extraData.putString(PlaceholderFragment.TitleKey, getString(R.string.my_account));
-
                 //Create fragment
-                fragment = new PlaceholderFragment();
-                fragment.setArguments(extraData);
+                weather_frag = new WeatherFragment();
+
                 fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.relativeLayoutFragmentContainer, fragment);
+                fragmentTransaction.replace(R.id.relativeLayoutFragmentContainer, weather_frag);
                 fragmentTransaction.commit();
                 break;
 

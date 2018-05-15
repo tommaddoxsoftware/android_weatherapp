@@ -21,4 +21,12 @@
     <string name="username_enter">Username: </string>
     <string name="password_enter">Password: </string>
 
+    <string name="enter_weather">Want to tell us your current weather? Enter your current weather
+    statistics below to let us know!</string>
+    <string name="temperature">Current Temp: </string>
+    <string name="weather">Weather: </string>
+    <string name="picture">Upload Picture: </string>
+    <string name="upload">Upload</string>
+    <string name="other">Other: </string>
+
 </resources>
