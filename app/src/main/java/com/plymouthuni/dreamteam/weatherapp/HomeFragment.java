@@ -42,9 +42,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
         return rootView;
 
-        //return inflater.inflate( R.layout.home_layout, null);
-
-
     }
 
 

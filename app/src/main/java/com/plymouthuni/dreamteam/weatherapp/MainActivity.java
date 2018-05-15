@@ -71,8 +71,12 @@ public class MainActivity extends AppCompatActivity
         //Add fragments to the activity
         FragmentManager fragmentManager = getSupportFragmentManager ();
         FragmentTransaction fragmentTransaction = null;
+
         PlaceholderFragment fragment = null;
-        HomeFragment frag = null;
+
+        HomeFragment home_frag = null;
+        MapFragment map_frag = null;
+
         Bundle extraData = null;
 
         // Handle navigation view item clicks here.
@@ -80,31 +84,20 @@ public class MainActivity extends AppCompatActivity
 
         switch(id) {
             case R.id.nav_home:
-                //Create Extra Data to put into the fragment
-                extraData = new Bundle();
-                extraData.putString(PlaceholderFragment.TitleKey, getString(R.string.home));
-
                 //Create fragment
-                fragment = new PlaceholderFragment();
+                home_frag = new HomeFragment();
 
-                frag = new HomeFragment();
-
-                fragment.setArguments(extraData);
                 fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.relativeLayoutFragmentContainer, frag);
+                fragmentTransaction.replace(R.id.relativeLayoutFragmentContainer, home_frag);
                 fragmentTransaction.commit();
                 break;
 
             case R.id.nav_map:
-                //Create Extra Data to put into the fragment
-                extraData = new Bundle();
-                extraData.putString(PlaceholderFragment.TitleKey, getString(R.string.map));
-
                 //Create fragment
-                fragment = new PlaceholderFragment();
-                fragment.setArguments(extraData);
+                map_frag = new MapFragment();
+
                 fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.relativeLayoutFragmentContainer, fragment);
+                fragmentTransaction.replace(R.id.relativeLayoutFragmentContainer, map_frag);
                 fragmentTransaction.commit();
                 break;
             case R.id.nav_account:
