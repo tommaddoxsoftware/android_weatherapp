@@ -1,12 +1,8 @@
 package com.plymouthuni.dreamteam.weatherapp;
 
 import android.os.Bundle;
-import android.support.constraint.Placeholder;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -76,6 +72,7 @@ public class MainActivity extends AppCompatActivity
         FragmentManager fragmentManager = getSupportFragmentManager ();
         FragmentTransaction fragmentTransaction = null;
         PlaceholderFragment fragment = null;
+        HomeFragment frag = null;
         Bundle extraData = null;
 
         // Handle navigation view item clicks here.
@@ -89,11 +86,14 @@ public class MainActivity extends AppCompatActivity
 
                 //Create fragment
                 fragment = new PlaceholderFragment();
+
+                frag = new HomeFragment();
+
                 fragment.setArguments(extraData);
                 fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.relativeLayoutFragmentContainer, fragment);
+                fragmentTransaction.replace(R.id.relativeLayoutFragmentContainer, frag);
                 fragmentTransaction.commit();
-            break;
+                break;
 
             case R.id.nav_map:
                 //Create Extra Data to put into the fragment

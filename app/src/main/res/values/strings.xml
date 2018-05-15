@@ -15,4 +15,10 @@
     <string name="share">Share</string>
     <string name="send">Send</string>
 
+    <string name="login">Login</string>
+    <string name="sign_up">Sign-Up</string>
+    <string name="no_account">No account? Sign up Below!</string>
+    <string name="username_enter">Username: </string>
+    <string name="password_enter">Password: </string>
+
 </resources>

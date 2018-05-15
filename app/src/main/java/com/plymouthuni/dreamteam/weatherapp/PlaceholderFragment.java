@@ -42,9 +42,6 @@ public class PlaceholderFragment extends Fragment
 
 
 
-
-
-
     //******************************************************************//
     // And we have to override CreateView, a little like an old Activity//
     // except that we use an inflater to create the view.				//
