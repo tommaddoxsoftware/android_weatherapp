@@ -29,4 +29,10 @@
     <string name="upload">Upload</string>
     <string name="other">Other: </string>
 
+    <string name="unexpected">An unexpected error occured. Please try again!</string>
+    <string name="waiting">Waiting for response</string>
+    <string name="oops">Oops! Something broke</string>
+
+    <string name="username"></string>
+
 </resources>
