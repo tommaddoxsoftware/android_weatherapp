@@ -126,12 +126,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener, I_JS
         int userID = 0;
 
         try {
-            action = response.getString("action");
-            actionResult =  response.getString("actionResult");
+            action = response.getString("action").toLowerCase();
+            actionResult =  response.getString("actionResult").toLowerCase();
             reason = response.getString("reason");
 
             username = username_input.getText().toString();
-            if(action == "login")
+            if(action.equals("login"))
                 userID = response.getInt("uid");
 
         }
@@ -140,7 +140,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener, I_JS
         }
 
         Log.i("action", action);
-
         Log.i("ActionResult", actionResult);
         Log.i("reason", reason);
 
@@ -148,7 +147,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, I_JS
 
         switch(action) {
             case "login":
-                    if(actionResult.equals("Fail")) {
+                    if(actionResult.equals("fail")) {
                         Toast.makeText(getActivity(), reason, Toast.LENGTH_SHORT).show();
 
                     }
