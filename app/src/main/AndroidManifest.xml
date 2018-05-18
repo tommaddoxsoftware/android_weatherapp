@@ -20,7 +20,12 @@
             </intent-filter>
         </activity>
 
-
     </application>
+
+    <!--************************************************************-->
+    <!-- Permissions we need.                                       -->
+    <!--************************************************************-->
+    <uses-permission android:name="android.permission.INTERNET" />
+
 
 </manifest>
