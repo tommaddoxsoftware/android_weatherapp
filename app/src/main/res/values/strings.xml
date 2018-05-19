@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Weather App</string>
 
+    <string name="error_permission_map">error_permission_map</string>
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_settings">Settings</string>
