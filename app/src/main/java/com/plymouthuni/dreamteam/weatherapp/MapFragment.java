@@ -4,8 +4,10 @@ import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +18,8 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
+
+import java.net.DatagramPacket;
 
 public class MapFragment extends Fragment {
 
@@ -40,44 +44,38 @@ public class MapFragment extends Fragment {
             ex.printStackTrace();
         }
 
-        map_View.getMapAsync(new OnMapReadyCallback() {
-            @Override
-            public void onMapReady(GoogleMap g_Map) {
-                google_map = g_Map;
 
-                //Request permission for users
+        getPermissions();
 
-                if (ContextCompat.checkSelfPermission(getContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) ==
-                        PackageManager.PERMISSION_GRANTED &&
-                        ContextCompat.checkSelfPermission(getContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION) ==
-                                PackageManager.PERMISSION_GRANTED) {
-
-                    google_map.setMyLocationEnabled(true);
-                    google_map.getUiSettings().setMyLocationButtonEnabled(true);
-                } else {
-
-                    Toast.makeText(getContext(), R.string.error_permission_map, Toast.LENGTH_LONG).show();
-                }
-
-                // Centre on users current position
-
-
-                // Load surrounding inputs from server
-
-
-                //LatLng sydney = new LatLng(-34, 151);
-                //google_map.addMarker(new MarkerOptions().position(sydney).title("Marker Title").snippet("Marker Description") );
-
-                //CameraPosition camera_Position = new CameraPosition.Builder().target(sydney).zoom(12).build();
-                //google_map.animateCamera(CameraUpdateFactory.newCameraPosition(camera_Position));
-
-            }
-        });
 
         return rootView;
 
     }
 
+    private void getPermissions(){
+        if ( ContextCompat.checkSelfPermission(getActivity(),
+                Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ) {
+
+            // No permission granted
+            if (ActivityCompat.shouldShowRequestPermissionRationale( getActivity(), Manifest.permission.ACCESS_FINE_LOCATION ) ) {
+
+                Toast.makeText(this.getContext(), R.string.permission_not_granted, Toast.LENGTH_SHORT).show();
+
+
+            }
+            else {
+                // Request permission
+                ActivityCompat.requestPermissions( getActivity(), new String[]
+                        {Manifest.permission.ACCESS_FINE_LOCATION}, 3000);
+            }
+
+        }
+        else{
+            // Permission already granted :)
+
+
+        }
+    }
 
     @Override
     public void onResume() {
