@@ -14,28 +14,26 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout="@+id/textView3"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="34dp"
 
         android:text="@string/login"
         android:textSize="24sp"
         android:textColor="@android:color/black"
-        app:fontFamily="monospace"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="25dp" />
+        app:fontFamily="monospace" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/username_input"
+
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/textView2"
+        android:layout_marginTop="10dp"
 
         android:textColor="@android:color/black"
         app:fontFamily="monospace"
 
-        android:layout_alignStart="@+id/textView4"
-        android:layout_alignLeft="@+id/textView4"
         android:text="@string/username_enter" />
 
     <TextView
@@ -43,27 +41,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/username_input"
+        android:layout_marginTop="10dp"
+
         android:textColor="@android:color/black"
         app:fontFamily="monospace"
-
-        android:layout_alignBaseline="@+id/password_input"
-        android:layout_marginStart="13dp"
-        android:layout_marginLeft="13dp"
-
-        android:text="@string/password_enter"
-
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="164dp" />
+        android:text="@string/password_enter" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="132dp"
-        android:text="@string/no_account"
 
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/login_button"
+
+        android:text="@string/no_account"
         android:textColor="@android:color/black"
         app:fontFamily="monospace"
         />
@@ -73,10 +68,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:layout_below="@id/textView5"
+        android:layout_marginTop="10dp"
 
-        android:layout_marginBottom="61dp"
         android:text="@string/sign_up"
         android:textColor="@android:color/black"
         app:fontFamily="monospace"
@@ -89,50 +84,35 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="181dp"
+        android:layout_below="@+id/password_input"
 
         android:text="@string/login"
         android:textColor="@android:color/black"
-        app:fontFamily="monospace"
-
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="231dp" />
+        app:fontFamily="monospace" />
 
     <EditText
         android:id="@+id/username_input"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
 
-        android:layout_marginEnd="61dp"
-        android:layout_marginRight="61dp"
-        android:layout_marginTop="95dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/textView3"
 
         android:ems="10"
         android:inputType="textPersonName"
-        tools:ignore="MissingConstraints"
-        tools:inputType="text"
-        tools:layout_editor_absoluteX="114dp"
-        tools:layout_editor_absoluteY="71dp" />
+        tools:inputType="text" />
 
     <EditText
         android:id="@+id/password_input"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
 
-        android:layout_alignStart="@+id/username_input"
-        android:layout_alignLeft="@+id/username_input"
-        android:layout_marginTop="207dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/textView4"
+
         android:ems="10"
-        android:inputType="textPassword"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="114dp"
-        tools:layout_editor_absoluteY="149dp" />
+        android:inputType="textPassword" />
 
 
 
