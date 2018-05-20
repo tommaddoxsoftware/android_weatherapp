@@ -40,6 +40,7 @@
         <item>Thunder</item>
         <item>Rainbow :)</item>
     </array>
+    <string name="uploadSuccess">Weather information uploaded successfully!</string>
 
     <string name="unexpected">An unexpected error occured. Please try again!</string>
     <string name="waiting">Waiting for response</string>
