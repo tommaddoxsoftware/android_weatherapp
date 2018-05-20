@@ -78,10 +78,10 @@ public class WeatherFragment extends Fragment implements View.OnClickListener, S
         View rootView = inflater.inflate(R.layout.weather_layout, container, false);
 
         // Initialise
-        upload_weather_button = (Button) rootView.findViewById(R.id.upload_weather_button);
+        upload_weather_button = (Button) rootView.findViewById(R.id.upload_button);
         weather_spinner = (Spinner) rootView.findViewById(R.id.weather_spinner);
         other_input = (EditText) rootView.findViewById(R.id.other_input);
-        tempurature_output = (TextView) rootView.findViewById(R.id.temperature_output);
+        tempurature_output = (TextView) rootView.findViewById(R.id.temp_output);
 
         sensor_manager = (SensorManager) getContext().getSystemService(Context.SENSOR_SERVICE);
 
@@ -166,7 +166,7 @@ public class WeatherFragment extends Fragment implements View.OnClickListener, S
         tempurature_output.setText( String.valueOf(tempurature) );
         switch (view.getId()) {
 
-            case R.id.upload_weather_button:
+            case R.id.upload_button:
                 updateWeather();
                 sendWeather();
                 Log.i("Upload Weather", "Upload Weather Button PRESSED");
