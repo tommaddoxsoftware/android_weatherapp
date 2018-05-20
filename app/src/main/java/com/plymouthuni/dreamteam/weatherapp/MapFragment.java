@@ -10,6 +10,7 @@ import android.location.GpsStatus;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
@@ -51,6 +52,10 @@ public class MapFragment extends Fragment implements I_JSON_Response_Listener, L
 
     MapView map_View;
     private GoogleMap google_map;
+
+    private boolean timer_task_running = false;
+    private int timer_counter = 0;
+    private TimerTask timerTask = null;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -160,6 +165,13 @@ public class MapFragment extends Fragment implements I_JSON_Response_Listener, L
         {					// API numbers older than API23
             Log.i(activityName, "Exception: " + ex.getMessage());
         }
+
+        // Threading stuff
+        timerTask = new TimerTask();
+        timer_task_running = true;
+        timerTask.execute(null, null, null);
+        Log.i("MapFragment", "Thread Resumed");
+
     }
 
     @Override
@@ -176,6 +188,14 @@ public class MapFragment extends Fragment implements I_JSON_Response_Listener, L
         catch (Exception ex) {
             Log.i(activityName, "Exception was thrown. Here's the message: " + ex.getMessage());
         }
+
+        // Threading stuff
+        if ( timerTask != null ) {
+            timer_task_running = false;
+            timerTask.cancel(true);
+            timerTask = null;
+        }
+
     }
 
     @Override
@@ -309,4 +329,40 @@ public class MapFragment extends Fragment implements I_JSON_Response_Listener, L
         return s;
     }
 
+
+
+
+    private class TimerTask extends AsyncTask<Void, Void, Void>
+    {
+
+        @Override
+        protected Void doInBackground(Void... params) {
+
+            while (timer_task_running) {
+                try {
+                    Thread.sleep(1000);
+                    timer_counter++;
+
+                    // Invoke onProgressUPdate()
+                    publishProgress(null);
+                }
+                catch (InterruptedException ex) {
+                    Log.i("Map Thread", "Timer Map Thread Interrupted!");
+                }
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... progress) {
+            Log.i("THREAD____COUNTER", String.valueOf( timer_counter ) );
+        }
+
+    }
+
+
+
 }
+
+
