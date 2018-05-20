@@ -320,8 +320,11 @@ public class Send_JSON_To_Server
                 // after the "}".                                           //
                 //**********************************************************//
                 int bracketStart = responseStr.indexOf('{');
-                int bracketEnd   = responseStr.indexOf('}')+1;
-                responseStr      = responseStr.substring(bracketStart, bracketEnd);
+                int bracketEnd   = responseStr.lastIndexOf('}');
+
+
+          //      responseStr      = responseStr.substring(bracketStart, bracketEnd);
+
                 result           = new JSONObject(responseStr);
 
                 //**********************************************************//

@@ -31,11 +31,14 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Iterator;
 import java.util.List;
 
+import static android.content.Context.ACCESSIBILITY_SERVICE;
 import static android.content.Context.LOCATION_SERVICE;
 
 import java.net.DatagramPacket;
@@ -227,42 +230,49 @@ public class MapFragment extends Fragment implements I_JSON_Response_Listener, L
         String strResult = getString(R.string.waiting);
         String jsonAction = "";
         String jsonStatus = "";
-        JSONObject mapMarkers;
+        JSONArray mapMarkers = null;
 
         try {
-            jsonStatus = response.getString("status");
-            jsonAction = response.getString("action");
+            Log.i(activityName, "Response: " + response);
+            jsonStatus = response.getString("responseStatus");
+            jsonAction = response.getString("responseAction");
+        }
+        catch (Exception oops) {
+            Log.i(activityName, "Exception: " + oops.getMessage());
+        }
+        Log.i(activityName, "Status: " + jsonStatus +" Action: " + jsonAction);
 
-            //Serverside code worked
-         //   if(!jsonStatus.equals("Fail")) {
-          //      if (jsonAction.equals("GetMarkers")) {
-                    mapMarkers = response.getJSONObject("markers");
+        //Serverside code worked
+        if(jsonStatus.toLowerCase().equals("success")) {
+            Log.i(activityName, "Success!");
+            if (jsonAction.toLowerCase().equals("getmarkers")) {
+                Log.i(activityName, "Action!");
+                try {
+                    mapMarkers = response.getJSONArray("markers");
 
                     //Loop through json (I've done the calculations for checking it's within a set distance to the user on the server. There's no point NOT using the external resources to do so.
                     //Also means that the JSON response is smaller - saving data for the win!//Loop through map markers and add them!
-                    while(mapMarkers.keys().hasNext()) {
-                        //Get location information
-                        Double tempLong = mapMarkers.getDouble("longitude");
-                        Double tempLat = mapMarkers.getDouble("latitude");
-                        String tempTitle = mapMarkers.getString("title");
-                        String tempDesc = mapMarkers.getString("description");
+                    for(int i=0; i<mapMarkers.length(); i++) {
+                        JSONObject tempJson = mapMarkers.getJSONObject(i);
 
-                        //Create location of marker
+                        Double tempLong = tempJson.getDouble("longitude");
+                        Double tempLat = tempJson.getDouble("latitude");
+                        String tempTitle = tempJson.getString("title");
+                        String tempDesc = tempJson.getString("weather");
+
                         LatLng tempLocation;
                         tempLocation = new LatLng(tempLat, tempLong);
 
                         CreateMapMarker(tempLocation, tempTitle, tempDesc);
-
-                        mapMarkers.keys().next();
+                        Log.i("Yolo", "Creating markers!");
                     }
-     //           }
-     //       }
-        }
-        catch (Exception oops) {
-            strResult = getString(R.string.oops);
-        }
+                }
+                catch(Exception ex) {
+                    Log.i(activityName, ex.getMessage());
+                }
 
-
+            }
+       }
     }
 
 
