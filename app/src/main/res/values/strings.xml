@@ -3,6 +3,8 @@
 
     <string name="error_permission_map">error_permission_map</string>
     <string name="permission_not_granted">Please grant permission!</string>
+    <string name="error_location_perms">Permission to use Location has been denied.</string>
+    <string name="ok">All good!</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -36,6 +38,5 @@
     <string name="waiting">Waiting for response</string>
     <string name="oops">Oops! Something broke</string>
 
-    <string name="username"></string>
 
 </resources>
