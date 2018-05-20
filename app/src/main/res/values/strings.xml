@@ -33,6 +33,13 @@
     <string name="picture">Upload Picture: </string>
     <string name="upload">Upload</string>
     <string name="other">Other: </string>
+    <array name="weather_spinner">
+        <item>Sunny</item>
+        <item>Cloudy</item>
+        <item>Rain</item>
+        <item>Thunder</item>
+        <item>Rainbow :)</item>
+    </array>
 
     <string name="unexpected">An unexpected error occured. Please try again!</string>
     <string name="waiting">Waiting for response</string>
