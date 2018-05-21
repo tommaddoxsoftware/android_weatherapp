@@ -152,7 +152,7 @@ public class MainActivity extends AppCompatActivity
                 fragmentTransaction.replace(R.id.relativeLayoutFragmentContainer, map_frag);
                 fragmentTransaction.commit();
                 break;
-            case R.id.nav_account:
+            case R.id.nav_weather:
                 //Create fragment
                 weather_frag = new WeatherFragment();
 
@@ -161,21 +161,6 @@ public class MainActivity extends AppCompatActivity
                 fragmentTransaction.commit();
                 break;
 
-            case R.id.nav_share:
-                //Create Extra Data to put into the fragment
-                extraData = new Bundle();
-                extraData.putString(PlaceholderFragment.TitleKey, getString(R.string.share));
-
-                //Create fragment
-                fragment = new PlaceholderFragment();
-                fragment.setArguments(extraData);
-                fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.relativeLayoutFragmentContainer, fragment);
-                fragmentTransaction.commit();
-                break;
-
-            case R.id.nav_send:
-                break;
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
