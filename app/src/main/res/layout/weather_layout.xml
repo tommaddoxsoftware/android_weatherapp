@@ -66,10 +66,9 @@
         android:id="@+id/weather_spinner"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-
         android:layout_centerHorizontal="true"
+        android:entries="@array/weather_spinner"
         android:layout_below="@id/textView9"
-
         android:textColor="@android:color/black"
         app:fontFamily="monospace" />
 
