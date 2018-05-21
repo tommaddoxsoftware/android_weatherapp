@@ -1,5 +1,11 @@
 <resources>
     <string name="app_name">Weather App</string>
+    <string name="app_welcome">Welcome to our weather app! Head to the map to view weather updates near you</string>
+    <string name="stats_header">Your stats:</string>
+    <string name="stats_pinsUploadedHeader">Map Pins Uploaded</string>
+    <string name="stats_AccountCreatedHeader">Account Creation Date</string>
+    <string name="logout">Logout</string>
+
 
     <string name="error_permission_map">error_permission_map</string>
     <string name="permission_not_granted">Please grant permission!</string>
@@ -11,6 +17,7 @@
     <string name="action_settings">Settings</string>
     <string name="home">Home</string>
     <string name="map">Map</string>
+    <string name="nav_weather">Upload Weather Pin</string>
     <string name="my_account">My Account</string>
     <string name="something">Something</string>
     <string name="settings">Settings</string>
