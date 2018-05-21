@@ -141,7 +141,7 @@ public class MapFragment extends Fragment implements I_JSON_Response_Listener, L
             google_map.setMyLocationEnabled(true);
             google_map.getUiSettings().setMyLocationButtonEnabled(true);
 
-           // locationManager.requestLocationUpdates(bestProvider, 5000, 10, this );
+            locationManager.requestLocationUpdates(bestProvider, 5000, 10, this );
             currLocation = locationManager.getLastKnownLocation(bestProvider);
 
             google_map.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(currLocation.getLatitude(), currLocation.getLongitude()), 13));

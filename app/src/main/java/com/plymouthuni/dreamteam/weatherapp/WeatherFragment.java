@@ -158,9 +158,14 @@ public class WeatherFragment extends Fragment implements View.OnClickListener, I
             SharedPreferences prefs = this.getContext().getSharedPreferences("userinfo", Context.MODE_PRIVATE );
             int userID = prefs.getInt("userid", 0);
 
+            String title = other_input.toString();
+            if(other_input.toString().equals("")) {
+                title = "Weather pin";
+            }
+
             objectToSend.put("latitude", currLocation.getLatitude());
             objectToSend.put("longitude", currLocation.getLongitude());
-            objectToSend.put("title", other_input.toString());
+            objectToSend.put("title", title );
             objectToSend.put("weather", weather_spinner.getSelectedItem().toString());
             objectToSend.put("uploadedby", userID);
 
