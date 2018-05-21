@@ -126,7 +126,12 @@ public class WeatherFragment extends Fragment implements View.OnClickListener, I
         } else {
             // Permission already granted :)
             locationManager.requestLocationUpdates(bestProvider, 5000, 10, this );
-            currLocation = locationManager.getLastKnownLocation(bestProvider);
+            try {
+                currLocation = locationManager.getLastKnownLocation(bestProvider);
+            }
+            catch(Exception ex) {
+                Log.i(activityName, ex.getMessage());
+            }
         }
     }
 

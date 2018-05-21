@@ -142,7 +142,12 @@ public class MapFragment extends Fragment implements I_JSON_Response_Listener, L
             google_map.getUiSettings().setMyLocationButtonEnabled(true);
 
             locationManager.requestLocationUpdates(bestProvider, 5000, 10, this );
-            currLocation = locationManager.getLastKnownLocation(bestProvider);
+            try {
+                currLocation = locationManager.getLastKnownLocation(bestProvider);
+            }
+            catch(Exception ex) {
+                Log.i(activityName, ex.getMessage());
+            }
 
             google_map.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(currLocation.getLatitude(), currLocation.getLongitude()), 13));
             CameraPosition camPos = new CameraPosition.Builder()
