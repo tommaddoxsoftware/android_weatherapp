@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffffff"
+    tools:context=".HomeFragment"
+    >
+
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout="@+id/textView3"
+        android:layout_centerHorizontal="true"
+
+        android:text="@string/login"
+        android:textSize="24sp"
+        android:textColor="@android:color/black"
+        app:fontFamily="monospace" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/textView2"
+        android:layout_marginTop="10dp"
+
+        android:textColor="@android:color/black"
+        app:fontFamily="monospace"
+
+        android:text="@string/username_enter" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/username_input"
+        android:layout_marginTop="10dp"
+
+        android:textColor="@android:color/black"
+        app:fontFamily="monospace"
+        android:text="@string/password_enter" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/login_button"
+
+        android:text="@string/no_account"
+        android:textColor="@android:color/black"
+        app:fontFamily="monospace"
+        />
+
+    <Button
+        android:id="@+id/signup_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/textView5"
+        android:layout_marginTop="10dp"
+
+        android:text="@string/sign_up"
+        android:textColor="@android:color/black"
+        app:fontFamily="monospace"
+
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="423dp" />
+
+    <Button
+        android:id="@+id/login_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/password_input"
+
+        android:text="@string/login"
+        android:textColor="@android:color/black"
+        app:fontFamily="monospace" />
+
+    <EditText
+        android:id="@+id/username_input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/textView3"
+
+        android:ems="10"
+        android:inputType="textPersonName"
+        tools:inputType="text" />
+
+    <EditText
+        android:id="@+id/password_input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/textView4"
+
+        android:ems="10"
+        android:inputType="textPassword" />
+
+
+
+</RelativeLayout>
