@@ -159,7 +159,7 @@ public class MainActivity extends AppCompatActivity
                 fragmentTransaction.replace(R.id.relativeLayoutFragmentContainer, map_frag);
                 fragmentTransaction.commit();
                 break;
-            case R.id.nav_account:
+            case R.id.nav_weather:
                 //Create fragment
                 weather_frag = new WeatherFragment();
 
@@ -173,6 +173,7 @@ public class MainActivity extends AppCompatActivity
                 prefs.edit().clear();
                 prefs.edit().commit();
 
+
                 //Set us to login fragment
 
                 //Create fragment
@@ -181,7 +182,6 @@ public class MainActivity extends AppCompatActivity
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.relativeLayoutFragmentContainer, login_frag);
                 fragmentTransaction.commit();
-
 
         }
 
