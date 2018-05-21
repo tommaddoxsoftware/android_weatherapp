@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
 
+    DrawerLayout nav = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        nav = drawer;
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
@@ -45,7 +47,7 @@ public class MainActivity extends AppCompatActivity
             FragmentTransaction fragmentTransaction = null;
 
             //LoginFragment login_frag = null;
-            HomeFragment login_frag = null;
+            LoginFragment login_frag = null;
             HomeFragment home_frag = null;
 
 
@@ -56,20 +58,22 @@ public class MainActivity extends AppCompatActivity
                 SharedPreferences prefs = getSharedPreferences("userinfo", MODE_PRIVATE);
                 if(prefs.contains("username")){
                     //Load default tab
-                    if (prefs.getString("username", null).equals("") || prefs.getString("username", null).length() < 0) {
-                        //Create fragment
-                        home_frag = new HomeFragment();
 
-                        fragmentTransaction = fragmentManager.beginTransaction();
-                        fragmentTransaction.replace(R.id.relativeLayoutFragmentContainer, home_frag);
-                        fragmentTransaction.commit();
-                    }
+                    //Create fragment
+                    home_frag = new HomeFragment();
+
+                    fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.relativeLayoutFragmentContainer, home_frag);
+                    fragmentTransaction.commit();
+
                 }
                 else {
-                    //Load login screen instead
-                    //Create fragment
-                    //login_frag = new LoginFragment();
-                    login_frag = new HomeFragment();
+
+                    //Disable nav drawer
+
+                    drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+
+                    login_frag = new LoginFragment();
 
                     fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.relativeLayoutFragmentContainer, login_frag);
@@ -81,6 +85,9 @@ public class MainActivity extends AppCompatActivity
                 Log.i("Exception", error);
             }
         }
+    }
+    public void EnableNavDrawer() {
+        nav.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
     }
 
     @Override
@@ -160,22 +167,22 @@ public class MainActivity extends AppCompatActivity
                 fragmentTransaction.replace(R.id.relativeLayoutFragmentContainer, weather_frag);
                 fragmentTransaction.commit();
                 break;
+            case R.id.nav_logout:
+                //Clear prefs
+                SharedPreferences prefs = getSharedPreferences("userinfo", MODE_PRIVATE);
+                prefs.edit().clear();
+                prefs.edit().commit();
 
-            case R.id.nav_share:
-                //Create Extra Data to put into the fragment
-                extraData = new Bundle();
-                extraData.putString(PlaceholderFragment.TitleKey, getString(R.string.share));
+                //Set us to login fragment
 
                 //Create fragment
-                fragment = new PlaceholderFragment();
-                fragment.setArguments(extraData);
-                fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.relativeLayoutFragmentContainer, fragment);
-                fragmentTransaction.commit();
-                break;
+                LoginFragment login_frag = new LoginFragment();
 
-            case R.id.nav_send:
-                break;
+                fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.relativeLayoutFragmentContainer, login_frag);
+                fragmentTransaction.commit();
+
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
