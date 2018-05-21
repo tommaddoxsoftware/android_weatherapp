@@ -48,18 +48,12 @@ import java.util.List;
 import static android.content.Context.LOCATION_SERVICE;
 import static android.content.Context.SENSOR_SERVICE;
 
-public class WeatherFragment extends Fragment implements View.OnClickListener, SensorEventListener, I_JSON_Response_Listener, LocationListener, GpsStatus.Listener {
+public class WeatherFragment extends Fragment implements View.OnClickListener, I_JSON_Response_Listener, LocationListener, GpsStatus.Listener {
 
     public static   String      activityName            = "Upload Weather";
     private         Button      upload_weather_button   = null;
     private         Spinner     weather_spinner         = null;
     private         EditText    other_input             = null;
-    private         TextView    tempurature_output      = null;
-    private         Weather     weather_upload          = null;
-
-    private SensorManager   sensor_manager;
-    private Sensor          temp_sensor;
-    private float           tempurature;
 
     private Location        currLocation    = null;
     private LocationManager locationManager = null;
@@ -81,32 +75,9 @@ public class WeatherFragment extends Fragment implements View.OnClickListener, S
         upload_weather_button = (Button) rootView.findViewById(R.id.upload_button);
         weather_spinner = (Spinner) rootView.findViewById(R.id.weather_spinner);
         other_input = (EditText) rootView.findViewById(R.id.other_input);
-        tempurature_output = (TextView) rootView.findViewById(R.id.temp_output);
-
-        sensor_manager = (SensorManager) getContext().getSystemService(Context.SENSOR_SERVICE);
-
-
-
-        if (sensor_manager != null) {
-            temp_sensor = sensor_manager.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE, true);
-            sensor_manager.registerListener(this, temp_sensor, SensorManager.SENSOR_DELAY_NORMAL);
-            Log.i("SENSOR_MANAGER", "SENSOR MANAGER NOT NULL, TEMP_SENSOR ASSIGNED, SENSOR MANAGER REGISTERED WITH LISTENER");
-        }
-        else {
-            Log.i("SENSOR_MANAGER", "SENSOR MANAGER IS NULL, TEMP_SENSOR NOT ASSIGNED, SENSOR MANAGER NOT REGISTERED WITH LISTENER");
-        }
-
-        if ( temp_sensor == null ) {
-            Log.i("SENSOR_MANAGER", "TEMP_SENSOR IS NULL");
-        }
-        else {
-            Log.i("SENSOR_MANAGER", "TEMP_SENSOR IS NOT NULL");
-        }
 
         // Set Button Listeners
         upload_weather_button.setOnClickListener(this);
-
-        tempurature_output.setText(String.valueOf(tempurature));
 
         //Get the location service
         locationManager = (LocationManager) getActivity().getSystemService(LOCATION_SERVICE);
@@ -163,11 +134,9 @@ public class WeatherFragment extends Fragment implements View.OnClickListener, S
     @Override
     public void onClick(View view) {
 
-        tempurature_output.setText( String.valueOf(tempurature) );
         switch (view.getId()) {
 
             case R.id.upload_button:
-                updateWeather();
                 sendWeather();
                 Log.i("Upload Weather", "Upload Weather Button PRESSED");
                 break;
@@ -179,14 +148,6 @@ public class WeatherFragment extends Fragment implements View.OnClickListener, S
 
     }
 
-    private void updateWeather() {
-        float temp = tempurature;
-        String weather = String.valueOf(weather_spinner.getPrompt());
-        String other_info = String.valueOf(other_input.getText());
-
-
-        weather_upload = new Weather((int) temp, weather, other_info);
-    }
 
 
     private void sendWeather() {
@@ -219,15 +180,6 @@ public class WeatherFragment extends Fragment implements View.OnClickListener, S
     public void onResume() {
         super.onResume();
 
-
-        if ( !sensor_manager.registerListener(this, temp_sensor, SensorManager.SENSOR_DELAY_NORMAL) ) {
-            Log.i("SENSOR_MANAGER", "SENSOR MANAGER NOW HAS LISTENER");
-            sensor_manager.registerListener(this, temp_sensor, SensorManager.SENSOR_DELAY_NORMAL);
-        }
-        else {
-            sensor_manager.registerListener(this, temp_sensor, SensorManager.SENSOR_DELAY_NORMAL);
-        }
-
         try {
             locationManager.addGpsStatusListener(this);
             locationManager.requestLocationUpdates(bestProvider, 150, 0, this);
@@ -245,10 +197,6 @@ public class WeatherFragment extends Fragment implements View.OnClickListener, S
     public void onPause() {
         super.onPause();
 
-        sensor_manager.unregisterListener(this);
-
-        Log.i("SENSOR_MANAGER", "LISTENER REMOVED FROM SENSOR MANAGER");
-
         try {
             locationManager.removeGpsStatusListener(this);
             locationManager.removeUpdates(this);
@@ -260,20 +208,6 @@ public class WeatherFragment extends Fragment implements View.OnClickListener, S
 
     }
 
-
-    public void onSensorChanged(SensorEvent sensorEvent) {
-        Log.i("SENSOR_MANGER", "SENSOR HAS CHANGED, UPDATED TEMPERATURE UI");
-        tempurature = sensorEvent.values[0];
-
-
-        tempurature_output.setText( String.valueOf(tempurature) );
-
-    }
-
-
-    public void onAccuracyChanged(Sensor sensor, int i) {
-        Log.i("SENSOR_MANAGER", "SENSOR ACCURACY HAS CHANGED.");
-    }
 
     public void onHTTPResponseReceived(JSONObject response) {
 
